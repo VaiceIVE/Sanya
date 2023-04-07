@@ -286,3 +286,14 @@ body {
   font-size: 16px;
   line-height: 20px;
 }
+
+.p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A7A7A7;
+}
+
+::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}

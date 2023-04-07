@@ -99,6 +99,7 @@ const NotepadFormView = (props) => {
                     </div>
                     <input
                         id="date"
+                        type="date"
                         placeholder="Введите дату"
                         className="input"
                         required
