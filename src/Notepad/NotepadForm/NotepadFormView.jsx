@@ -87,9 +87,9 @@ const NotepadFormView = (props) => {
                                     value={selectedColor}
                                     onChange={(e) => handleColorChange(e)}
                                 >
-                                    <option/>
-                                    {color.options.map(({ label, value }) => (
-                                        <option key={value} value={value}>
+                                    <option>Белый</option>
+                                    {color.options.map(({ value, label}) => (
+                                        <option style={{ color: value}} key={value} value={value}>
                                             {label}
                                         </option>
                                     ))}

@@ -12,8 +12,7 @@ const isAlreadyAdded = (notes, newNote) =>
         if (
             t.title === newNote.title &&
             t.description === newNote.description &&
-            t.date === newNote.date  &&
-            t.color.code === newNote.color.code
+            t.date === newNote.date
         ) {
             return true;
         }
@@ -31,8 +30,13 @@ const NotepadNotesProvider = ({ children }) => {
         setNotes([...notes, addId(notes, newNote)]);
     };
 
+    const handleDelete = (id) => {
+        const updatedNotes = notes.filter(note => note.title !== id);
+        setNotes(updatedNotes);
+    };
+
     return (
-        <Context.Provider value={[notes, addNote]}>
+        <Context.Provider value={[notes, addNote, handleDelete]}>
             {children}
         </Context.Provider>
     );

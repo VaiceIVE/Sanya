@@ -2,10 +2,10 @@ import actionTypes from './NotepadFormActionTypes';
 
 const isNotepadFormModelValid = (model) => {
     const {
-        fields: { title, description, date, color },
+        fields: { title },
     } = model;
 
-    return !!(title.value && color.value);
+    return !!(title.value);
 };
 
 const withValidation = (state, field, value) => {

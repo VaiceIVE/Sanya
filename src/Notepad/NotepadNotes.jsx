@@ -1,19 +1,20 @@
 import React from "react";
+import Note from "../components/Note";
 import { useNotepadNotesContext } from "./NotepadNotesProvider";
 
 const NotepadNotes = () => {
-    const [notes] = useNotepadNotesContext();
+    const [notes, add ,del] = useNotepadNotesContext();
+
+    const handleDelete = (id) => {
+        del(id);
+    };
 
     return (
         <div className="w878 pt32 pl32">
             <h2 className="h2 mb31">Мои записи</h2>
             <ul>
                 {notes.map((item) => (
-                    <li className="li mb16" key={item.id}>
-                        <h3 className="h3 mb8">{item.title}</h3>
-                        <p className="p mb16">{item.date}</p>
-                        <p className="grey">{item.description}</p>
-                    </li>
+                    <Note key={item.title} item={item} handleDelete={handleDelete}/>
                 ))}
             </ul>
         </div>
