@@ -7,6 +7,7 @@ const Note = ({item, handleDelete}) => {
         <li
             style={(item.color) ? {
                 color: item.color.code,
+                border: `1px solid ${item.color.code}`,
                 } : {}} 
             className="li mb16" 
             key={item.id}
