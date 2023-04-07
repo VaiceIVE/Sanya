@@ -8,12 +8,13 @@ const Notepad = () => {
 
     return (
         <NotepadNotesProvider>
-
-            <NotepadFormAdapter>
-                <NotepadForm/>
-            </NotepadFormAdapter>
-
-            <NotepadNotes/>
+            <h1 className="h1 mb48">Записная книжка</h1>
+            <div className="row aifs">
+                <NotepadFormAdapter>
+                    <NotepadForm/>
+                </NotepadFormAdapter>
+                <NotepadNotes/>
+            </div>
         </NotepadNotesProvider>
     );
 };

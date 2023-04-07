@@ -33,6 +33,7 @@ $md4: 479.98;
 .row {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .mb16 {
@@ -73,4 +74,81 @@ $md4: 479.98;
     background: #F9F8F8;
     border: 1px solid #CBCBCB;
     border-radius: 8px;
+}
+
+.h1 {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+}
+
+.mb48 {
+    margin-bottom: 48px;
+}
+
+.App {
+    padding-top: 64px;
+}
+
+.select {
+    border: 1px solid black; 
+    border-radius: 0.5em;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.column {
+    width: 622px;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+
+.mb31 {
+    margin-bottom: 31px;
+}
+
+.h2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.w878 {
+    width: 878px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.aifs {
+    align-items: flex-start;
+}
+
+.pt32 {
+    padding-top: 32px;
+}
+
+.pl32 {
+    padding-left: 32px;
+}
+
+.li {
+    border: 1px solid #CBCBCB;
+    border-radius: 8px;
+    padding: 16px; 
+}
+
+.grey {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #565656;
+}
+
+.h3 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
 }

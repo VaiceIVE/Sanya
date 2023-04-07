@@ -66,7 +66,7 @@ const NotepadFormView = (props) => {
             <form onSubmit={handleAdd} noValidate autoComplete="off">
                 
                 <div className="column mb16">
-                    <p className="p mb8 black">Заголовок записи</p>
+                    <p className="mb8 black">Заголовок записи</p>
                     <input
                         id="title"
                         placeholder="Введите текст"
@@ -77,11 +77,12 @@ const NotepadFormView = (props) => {
                 </div>
 
                 <div className="column mb16">
-                    <div className="row">
-                        <p className="p mb8 black">Дата записи</p>
+                    <div className="row mb8">
+                        <p className="black">Дата записи</p>
                         <div>
                             {isLoading ? (<>123</>) : (<>
                                 <select
+                                    className="select"
                                     id="color"
                                     value={selectedColor}
                                     onChange={(e) => handleColorChange(e)}
@@ -106,8 +107,8 @@ const NotepadFormView = (props) => {
                 </div>
 
                 <textarea 
-                    className="textarea mb16"
-                    id="date"
+                    className="textarea mb16 mr20"
+                    id="description"
                     placeholder="Введите свою запись тут..."
                     onChange={(e) => handleDescriptionChange(e)}
                 >

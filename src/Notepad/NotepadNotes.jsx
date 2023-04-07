@@ -5,10 +5,17 @@ const NotepadNotes = () => {
     const [notes] = useNotepadNotesContext();
 
     return (
-        <div>
-            {notes.map((item) => (
-                <div key={item.id}>{item.title} {item.description}</div>
-            ))}
+        <div className="w878 pt32 pl32">
+            <h2 className="h2 mb31">Мои записи</h2>
+            <ul>
+                {notes.map((item) => (
+                    <li className="li mb16" key={item.id}>
+                        <h3 className="h3 mb8">{item.title}</h3>
+                        <p className="p mb16">{item.date}</p>
+                        <p className="grey">{item.description}</p>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
