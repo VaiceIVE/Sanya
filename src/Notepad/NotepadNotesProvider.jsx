@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { saveAs } from 'file-saver';
 
 export const Context = createContext();
 
@@ -36,9 +37,9 @@ const NotepadNotesProvider = ({ children }) => {
     };
 
     const handleSave = (item) => {
-        console.log(item);
-        const jsonToTxt = require("json-to-txt");
-        const dataInString = jsonToTxt({data: item});
+        const fileName = `Note number ${item.id}.txt`;
+        const file = new Blob([JSON.stringify(item)], {type: 'text/plain;charset=utf-8'});
+        saveAs(file, fileName);
     };
 
     return (
