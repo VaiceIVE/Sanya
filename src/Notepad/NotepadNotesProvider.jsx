@@ -35,8 +35,14 @@ const NotepadNotesProvider = ({ children }) => {
         setNotes(updatedNotes);
     };
 
+    const handleSave = (item) => {
+        console.log(item);
+        const jsonToTxt = require("json-to-txt");
+        const dataInString = jsonToTxt({data: item});
+    };
+
     return (
-        <Context.Provider value={[notes, addNote, handleDelete]}>
+        <Context.Provider value={[notes, addNote, handleDelete, handleSave]}>
             {children}
         </Context.Provider>
     );

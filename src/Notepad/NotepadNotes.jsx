@@ -3,10 +3,14 @@ import Note from "../components/Note";
 import { useNotepadNotesContext } from "./NotepadNotesProvider";
 
 const NotepadNotes = () => {
-    const [notes, add ,del] = useNotepadNotesContext();
+    const [notes, add ,del, save] = useNotepadNotesContext();
 
     const handleDelete = (id) => {
         del(id);
+    };
+
+    const handleSave = (item) => {
+        save(item);
     };
 
     return (
@@ -14,7 +18,12 @@ const NotepadNotes = () => {
             <h2 className="h2 mb31">Мои записи</h2>
             <ul>
                 {notes.map((item) => (
-                    <Note key={item.title} item={item} handleDelete={handleDelete}/>
+                    <Note 
+                        key={item.title} 
+                        item={item} 
+                        handleDelete={handleDelete} 
+                        handleSave={handleSave}
+                    />
                 ))}
             </ul>
         </div>
