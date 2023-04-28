@@ -1,64 +1,84 @@
 import React from "react";
 import { screen, fireEvent, within, render } from "@testing-library/react";
+import { describe } from '@jest/globals';
 import NotepadForm from "../index";
 
-describe("NewsletterForm", () => {
-    const newsletterOptions = [
+describe("NotepadForm", () => {
+    const notepadColors = [
         {
-            label: "One",
-            value: "one",
+            value: 'rgba(253, 113, 175, 1)',
+            label: 'Красный',
         },
         {
-            label: "Two",
-            value: "two",
+            value: 'rgba(85, 119, 255, 1)',
+            label: 'Синий',
+        },
+        {
+            value: 'rgba(0, 184, 132, 1)',
+            label: 'Зеленый',
         },
     ];
-    const [, secondOption] = newsletterOptions;
-    const fullName = "Daniel Dughila";
+    const [, secondOption] = notepadColors;
+    const title = "title";
+    const description = "description";
+    const date = new Date().toLocaleDateString();
 
-    const fillInFullName = async () => {
-        const fullNameInputEl = await screen.findByRole("textbox", {
-            name: /full name/i,
+    const fillInTitle = async () => {
+        const titleInputEl = await screen.findByRole("textbox", {
+        name: /title/i,
         });
-        fireEvent.change(fullNameInputEl, { target: { value: fullName } });
+        fireEvent.change(titleInputEl, { target: { value: title } });
     };
 
-    const selectNewsletter = async () => {
-        const newsletterSelectButtonEl = await screen.findByRole("button", {
-            name: /newsletter/i,
+    const fillInDescription = async () => {
+        const descriptionInputEl = await screen.findByRole("textbox", {
+        name: /description/i,
         });
-        fireEvent.mouseDown(newsletterSelectButtonEl);
-        const newsletterSelectEl = await screen.findByRole("listbox");
-        const secondOptionEl = await within(newsletterSelectEl).getByText(
-        secondOption.label
-        );
-        fireEvent.click(secondOptionEl);
+        fireEvent.change(descriptionInputEl, { target: { value: description } });
     };
 
-    const submitForm = async () => {
-        const submitButtonEl = await screen.findByRole("button", {
-            name: /subscribe/i,
-        });
-        fireEvent.submit(submitButtonEl);
+    const fillInDate = async () => {
+        const dateInputEl = await screen.getByTestId("date");
+        fireEvent.change(dateInputEl, { target: { value: date } });
     };
 
-    it("should add a newsletter subscription", async () => {
-    const onSubmitSpy = jest.fn();
+    const selectColor = async () => {
+        const colorSelectButtonEl = await screen.findByRole("combobox", {
+            name: /color/i,
+        });
+        fireEvent.mouseDown(colorSelectButtonEl);
+        const newsletterSelectEl = await screen.findByText("Белый");
+        fireEvent.change(colorSelectButtonEl, newsletterSelectEl);
+    };
+
+    const handleAdd = async () => {
+        const addButtonEl = await screen.findByRole("button", {
+            name: /add/i,
+        });
+        fireEvent.submit(addButtonEl);
+    };
+
+    it("ok", async () => {
+        const onAddSpy = jest.fn();
 
     render(
         <NotepadForm
-            newsletterOptions={newsletterOptions}
-            onSubmit={onSubmitSpy}
+            notepadColors={notepadColors}
+            onAdd={onAddSpy}
         />
     );
 
-    await fillInFullName();
-    await selectNewsletter();
-    await submitForm();
+    await fillInTitle();
+    await fillInDescription();
+    await fillInDate();
+    await selectColor();
+    await handleAdd();
 
-    expect(onSubmitSpy).toHaveBeenCalledWith({
-        fullName,
-        newsletter: secondOption.value,
+    expect(onAddSpy).toHaveBeenCalledWith({
+        title,
+        description,
+        date,
+        color: 'Белый'
     });
     });
 });

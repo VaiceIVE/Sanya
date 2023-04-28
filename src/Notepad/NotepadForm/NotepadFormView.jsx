@@ -69,6 +69,8 @@ const NotepadFormView = (props) => {
                     <p className="mb8 black">Заголовок записи</p>
                     <input
                         id="title"
+                        aria-label="title"
+                        role="textbox"
                         placeholder="Введите текст"
                         className="input"
                         required
@@ -82,14 +84,18 @@ const NotepadFormView = (props) => {
                         <div>
                             {isLoading ? (<>123</>) : (<>
                                 <select
+                                    aria-label="color"
                                     className="select"
                                     id="color"
                                     value={selectedColor}
                                     onChange={(e) => handleColorChange(e)}
                                 >
                                     <option>Белый</option>
-                                    {color.options.map(({ value, label}) => (
-                                        <option style={{ color: value}} key={value} value={value}>
+                                    {color.options.map(({value, label}) => (
+                                        <option
+                                            aria-label={label}
+                                            style={{color: value}} value={value} key={label}
+                                        >
                                             {label}
                                         </option>
                                     ))}
@@ -100,6 +106,7 @@ const NotepadFormView = (props) => {
                     <input
                         id="date"
                         type="date"
+                        data-testid="date"
                         placeholder="Введите дату"
                         className="input"
                         required
@@ -109,6 +116,8 @@ const NotepadFormView = (props) => {
 
                 <textarea 
                     className="textarea mb16 mr20"
+                    aria-label="description"
+                    role="textbox"
                     id="description"
                     placeholder="Введите свою запись тут..."
                     onChange={(e) => handleDescriptionChange(e)}
@@ -116,7 +125,7 @@ const NotepadFormView = (props) => {
 
                 </textarea>
 
-                <button disabled={!isValid} className="button">Добавить запись</button>
+                <button role="button" aria-label="add" disabled={!isValid} className="button">Добавить запись</button>
             </form>
         </div>
     );
