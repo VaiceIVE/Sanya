@@ -1,6 +1,6 @@
 \connect banners; 
 
-SET DATESTYLE TO 'German'
+SET DATESTYLE TO 'German';
 
 CREATE TABLE IF NOT EXISTS public.note
 (
