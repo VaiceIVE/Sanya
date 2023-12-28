@@ -11,7 +11,7 @@ const Note = ({item, handleDelete, handleSave}) => {
     const [click, setClick] = useState(item.click_count)
     const handleButtonClick = () => {
         setClick(perv => perv+1)
-        axios.put(`http://localhost:8080/api/note/${item.id}`,{click_count:click+1})
+        axios.put(`http://178.170.192.87:8080/api/note/${item.id}`,{click_count:click+1})
             .then(() => window.location.replace(item.url, '_blank'))
         
     }

@@ -8,7 +8,7 @@ const UserPage = () => {
     const [banner, setBanner] = useState([])
     useEffect(() => {
         const date = new Date()
-        axios.get("http://localhost:8080/api/notes/").then((response) => {
+        axios.get("http://178.170.192.87:8080/api/notes/").then((response) => {
             const ar = response.data.filter(item => dayjs(item.date).isAfter(date))
             if (ar.length > 1) {
                 const min = Math.ceil(0);
@@ -25,7 +25,7 @@ const UserPage = () => {
 
     useEffect(()=> {
         if (banner.length) {
-            axios.put(`http://localhost:8080/api/note/${banner[0].id}`,{count:banner[0].count + 1})
+            axios.put(`http://178.170.192.87:8080/api/note/${banner[0].id}`,{count:banner[0].count + 1})
         }
     },[banner])
     return(
