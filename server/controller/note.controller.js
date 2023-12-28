@@ -54,7 +54,8 @@ class NoteController {
       ...note,
       color: {code: note.code}
       }))
-    convertedNotes.map(note => delete note.code);
+    convertedNotes.map(note => delete note.code);4
+    console.log(convertedNotes)
     return res.json(convertedNotes);
   }
 }
