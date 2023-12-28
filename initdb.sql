@@ -1,13 +1,11 @@
 \connect banners; 
 
-SET DATESTYLE to 'European';
-
 CREATE TABLE IF NOT EXISTS public.note
 (
     id integer NOT NULL,
     title text COLLATE pg_catalog."default" NOT NULL,
     description text COLLATE pg_catalog."default" NOT NULL,
-    date text NOT NULL,
+    date date NOT NULL,
     color_id integer,
     count integer DEFAULT 0,
     click_count integer DEFAULT 0,
