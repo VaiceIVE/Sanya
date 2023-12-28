@@ -1,6 +1,6 @@
 import db from '../db.js';
 
-class noteController {
+class NoteController {
 
   async createNote(req, res) {
     const {id, title, description, date, color_id, url} = req.body;
@@ -61,3 +61,5 @@ class noteController {
   }
 }
 
+
+export default new NoteController();
