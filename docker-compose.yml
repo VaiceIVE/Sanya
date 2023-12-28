@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: 1423
       POSTGRES_USER: postgres
       POSTGRES_DB: banners
-      PGDATESTYLE: European
+      PGDATESTYLE: ISO
     restart: "always"
     ports:
       - 5432:5432
