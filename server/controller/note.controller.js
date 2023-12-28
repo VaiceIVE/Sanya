@@ -3,10 +3,10 @@ import db from '../db.js';
 class NoteController {
 
   async createNote(req, res) {
-    const {id, title, description, date, color_id} = req.body;
+    const {id, title, description, date, color_id, url} = req.body;
     const newNote = await db.query(
-      `INSERT INTO note (id, title, description, date, color_id) values ($1, $2, $3, $4, $5) RETURNING *`
-    , [id, title, description, date, color_id]);
+      `INSERT INTO note (id, title, description, date, color_id, click_count, url) values ($1, $2, $3, $4, $5, 0, $6) RETURNING *`
+    , [id, title, description, date, color_id, url]);
     return res.json(newNote.rows[0]);
   }
 
@@ -17,18 +17,27 @@ class NoteController {
   }
 
   async updateNote(req, res) {
-    const {id, title, description, date, color_id} = req.body;
-    const note = await db.query(
-      `UPDATE note set title = $2, description = $3, date = $4, color_id = $5 WHERE id = $1 RETURNING *`
-    , [id, title, description, date, color_id]);
-    return res.json(note.rows[0]);
+    const id = req.params.id;
+    const {click_count, count} = req.body;
+    if (click_count) {
+      const note = await db.query(
+        `UPDATE note set click_count = $2 WHERE id = $1 RETURNING *`
+      , [id, click_count]);
+      return res.json(note.rows[0]);
+    }
+    else {
+      const note = await db.query(
+        `UPDATE note set count = $2 WHERE id = $1 RETURNING *`
+      , [id, count]);
+      return res.json(note.rows[0]);
+    } 
   }
 
   async getNotes(_req, res) {
     const notes  = await db.query(
       `
         SELECT 
-          N. "id", N. "title", N. "description", N. "date", C. "code" 
+          N. "id", N. "title", N. "description", N. "date", C. "code", N. "click_count", N. "url", N. "count"
         FROM 
           "note" N
         LEFT JOIN

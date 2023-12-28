@@ -8,7 +8,7 @@ const Notepad = () => {
 
     return (
         <NotepadNotesProvider>
-            <h1 className="h1 mb48">Записная книжка</h1>
+            <h1 className="h1 mb48">Создание Баннера</h1>
             <div className="row aifs">
                 <NotepadFormAdapter>
                     <NotepadForm/>

@@ -15,6 +15,9 @@ const NotepadFormModal = {
             value: '',
             options: '',
         },
+        url:{
+            value: ''
+        }
     },
 };
 

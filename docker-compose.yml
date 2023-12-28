@@ -1,0 +1,36 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: 1423
+      POSTGRES_USER: postgres
+      POSTGRES_DB: banners
+    restart: "always"
+    ports:
+      - 5432:5432
+    volumes:
+      #- ./postgres/data:/docker-entrypoint-initdb.d/
+      - ./postgres/postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  frontend: 
+    image: node:20
+    entrypoint: bash -c "npm install && npm run dev --host"
+    ports:
+      - 7777:7777
+    working_dir: /frontend
+    volumes:
+      - ./client:/frontend
+
+  backend: 
+    image: node:20
+    entrypoint: ["npm", "run", "start"]
+    ports:
+      - 8080:8080
+    working_dir: /backend
+    volumes:
+      - ./server:/backend

@@ -38,7 +38,6 @@ const NotepadFormView = (props) => {
 
         onFieldChange({ field: "description", value });
     };
-
     const handleUrlChange = (e) => {
         e.preventDefault();
 
@@ -48,7 +47,7 @@ const NotepadFormView = (props) => {
 
         onFieldChange({ field: "url", value });
     };
-
+    handleUrlChange
     const handleDateChange = (e) => {
         e.preventDefault();
 
@@ -81,7 +80,7 @@ const NotepadFormView = (props) => {
                         id="title"
                         aria-label="title"
                         role="textbox"
-                        placeholder="Введите текст"
+                        placeholder="текст"
                         className="input"
                         required
                         onChange={(e) => handleTitleChange(e)}
@@ -117,7 +116,7 @@ const NotepadFormView = (props) => {
                         id="date"
                         type="date"
                         data-testid="date"
-                        placeholder="Введите дату"
+                        placeholder="дату"
                         className="input"
                         required
                         onChange={(e) => handleDateChange(e)}
@@ -127,8 +126,8 @@ const NotepadFormView = (props) => {
                         id="url"
                         aria-label="url"
                         role="textbox"
-                        placeholder="Введите ссылку"
-                        className="input mb16"
+                        placeholder="текст"
+                        className="input"
                         required
                         onChange={(e) => handleUrlChange(e)}
                     />

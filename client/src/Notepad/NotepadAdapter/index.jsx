@@ -14,13 +14,14 @@ const NotepadFormAdapter = () => {
     }, [colors]);
 
     const handleAdd = ( fields ) => {
-        const { title, description, date, color } = fields;
+        const { title, description, date, color , url} = fields;
 
         addNote({
             title,
             description,
             date,
             color: getSelectedColor(colors, color),
+            url,
         });
     };
 

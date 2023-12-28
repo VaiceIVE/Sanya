@@ -3,10 +3,10 @@ const { Pool } = pkg;
 
 const pool = new Pool({
     user: "postgres",
-    password: "root",
+    password: "1423",
     host: "localhost",
     port: 5432,
-    database: "notepad"
+    database: "banners"
 })
 
 export default pool;

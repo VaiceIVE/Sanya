@@ -29,7 +29,7 @@ const NotepadNotesProvider = ({ children }) => {
     const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/api/notes')
+        axios.get('http://localhost:8080/api/notes') // для юзера 
         .then(response =>
             setNotes(response.data));
     }, []);
@@ -46,6 +46,7 @@ const NotepadNotesProvider = ({ children }) => {
                 description: newNote.description,
                 date: newNote.date,
                 color_id: newNote.color?.color_id,
+                url: newNote.url,
             }
         ).then(response => {
           const note = {

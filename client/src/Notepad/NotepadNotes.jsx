@@ -15,7 +15,7 @@ const NotepadNotes = () => {
 
     return (
         <div className="w878 pt32 pl32">
-            <h2 className="h2 mb31">Мои записи</h2>
+            <h2 className="h2 mb31">Все баннеры</h2>
             <ul>
                 {notes.map((item) => (
                     <Note 

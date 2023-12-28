@@ -17,7 +17,7 @@ const NotepadForm = ({ notepadColors, onAdd }) => {
 
     const handleAdd = () => {
         const {
-            fields: { title, description, date, color },
+            fields: { title, description, date, color , url},
         } = model;
 
         onAdd(
@@ -27,7 +27,8 @@ const NotepadForm = ({ notepadColors, onAdd }) => {
                 date: (date.value === '' ? 
                 new Date().toLocaleDateString() : 
                 date.value.split('-').reverse().join('.')), 
-                color: color.value
+                color: color.value,
+                url: url.value
             });
     };
 
