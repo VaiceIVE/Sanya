@@ -1,3 +1,6 @@
+SET DATESTYLE to 'European';
+
+
 CREATE TABLE IF NOT EXISTS public.note
 (
     id integer NOT NULL,
