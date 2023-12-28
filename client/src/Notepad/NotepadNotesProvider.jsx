@@ -29,7 +29,7 @@ const NotepadNotesProvider = ({ children }) => {
     const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/api/notes') // для юзера 
+        axios.get('http://178.170.192.87:8080/api/notes') // для юзера 
         .then(response =>
             setNotes(response.data));
     }, []);
@@ -39,7 +39,7 @@ const NotepadNotesProvider = ({ children }) => {
           console.log('true')
             return;
         };
-        axios.post('http://localhost:8080/api/note', 
+        axios.post('http://178.170.192.87:8080/api/note', 
             {
                 id: generateId(), 
                 title: newNote.title,
@@ -59,7 +59,7 @@ const NotepadNotesProvider = ({ children }) => {
     };
 
     const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:8080/api/note/${id}`);
+        await axios.delete(`http://178.170.192.87:8080/api/note/${id}`);
         const updatedNotes = notes.filter(note => note.id !== id);
         setNotes(updatedNotes);
     };
