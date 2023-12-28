@@ -8,7 +8,7 @@ const app = express();
 
 app.use(cors({
   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
-  origin: ['http://localhost:5173/', 'http://localhost:5173', 'http://178.170.192.87:5173/', 'http://178.170.192.87:5173'],
+  origin: ['http://localhost:7777/', 'http://localhost:7777', 'http://178.170.192.87:7777/', 'http://178.170.192.87:7777'],
   optionsSuccessStatus: 200,
   credentials: true,
 }));
