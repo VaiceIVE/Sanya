@@ -4,7 +4,7 @@ class NoteController {
 
   async createNote(req, res) {
     const {id, title, description, date, color_id, url} = req.body;
-    await db.query("`SET DATESTYLE TO 'German';")
+    await db.query("SET DATESTYLE TO 'German';")
     const newNote = await db.query(`INSERT INTO note (id, title, description, date, color_id, click_count, url) values ($1, $2, $3, $4, $5, 0, $6) RETURNING *`
     , [id, title, description, date, color_id, url]);
     return res.json(newNote.rows[0]);
